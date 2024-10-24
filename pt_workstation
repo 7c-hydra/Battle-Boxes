@@ -1,7 +1,6 @@
-# Quick Ubuntu Build
-
-# Updates and Access
-sudo apt update && upgrade -y
+#Update and Setup
+sudo apt update -y
+sudo apt upgrade -y
 sudo apt install xrdp -y
 sudo apt install xfce4 xfce4-goodies -y
 echo "xfce4-session" > ~/.xsession
@@ -11,9 +10,14 @@ sudo systemctl start xrdp
 sudo ufw allow 3389
 echo "ubuntu:yourpassword" | sudo chpasswd
 
-# Logs and Appearance
-
-
-
-
-# Other tools
+#Log Files
+mkdir -p ~/Desktop/action_logs
+echo '
+# Log all commands with timestamps to a file in the command_logs directory
+LOG_DIR=~/Desktop/action_logs
+LOG_FILE="$LOG_DIR/action_log_$(date +%Y-%m-%d).txt"
+mkdir -p $LOG_DIR
+PROMPT_COMMAND='"'"'RETRN_VAL=$?; echo "$(date "+%Y-%m-%d %H:%M:%S") $(whoami) $(history 1 | sed "s/^ *[0-9]* *//")" >> $LOG_FILE'"'"'
+' >> ~/.bashrc
+source ~/.bashrc
+chmod 600 ~/Desktop/action_logs/command_log_$(date +%Y-%m-%d).txt
