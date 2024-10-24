@@ -36,3 +36,6 @@ source /home/ubuntu/.bashrc && wait
 
 # Adjust permissions for the logging directory (ignore specific file as it's dynamically created)
 chmod 700 /home/ubuntu/Desktop/action_logs
+
+# Adjust timezone
+sudo timedatectl set-timezone America/Chicago
