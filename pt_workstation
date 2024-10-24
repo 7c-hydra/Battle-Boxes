@@ -1,0 +1,11 @@
+# Quick Ubuntu Build
+
+sudo apt update && upgrade -y
+sudo apt install xrdp -y
+sudo apt install xfce4 xfce4-goodies -y
+echo "xfce4-session" > ~/.xsession
+sudo systemctl restart xrdp
+sudo systemctl enable xrdp
+sudo systemctl start xrdp
+sudo ufw allow 3389
+echo "ubuntu:yourpassword" | sudo chpasswd
