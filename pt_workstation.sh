@@ -21,6 +21,9 @@ sudo ufw allow 3389
 echo "ubuntu:yourpassword" | sudo chpasswd
 echo "root:yourpassword" | sudo chpasswd
 
+# Set Hostname
+sudo hostname workstation
+
 # Log Files - Ensure we are setting up logging for the 'ubuntu' user
 mkdir -p /home/ubuntu/Desktop/action_logs
 echo '
